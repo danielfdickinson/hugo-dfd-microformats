@@ -1,0 +1,6 @@
+{{- if (.Params.microformatsEnable | default .Site.Params.microformatsEnable | default true) -}}
+    {{- partial "helpers/microformats/facebook" . -}}
+    {{- partial "helpers/microformats/opengraph" . -}}
+    {{- partial "helpers/microformats/schema" . -}}
+    {{- partial "helpers/microformats/twitter_cards" . -}}
+{{- end -}}
