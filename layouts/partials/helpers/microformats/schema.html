@@ -1,17 +1,18 @@
-{{- $metadataGathered := partial "helpers/return-metadata" (dict "page" .Page) }}
+{{- if (.Params.microformatsSchemaEnable | default .Site.Params.microformatsSchemaEnable | default true) -}}
+    {{- $metadataGathered := partial "helpers/return-metadata" (dict "page" .Page) }}
 <meta itemprop="name" content="{{ $metadataGather.name }}">
 <meta itemprop="description" content="{{ $metadataGathered.description }}">
 
-{{- if .IsPage -}}
-    {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
-    {{- with $metadataGathered.datePublished }}
+    {{- if .IsPage -}}
+        {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+        {{- with $metadataGathered.datePublished }}
 <meta itemprop="datePublished" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />
-    {{- end -}}
-    {{- with $metadataGathered.dateModified }}<meta itemprop="dateModified" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end}}
+        {{- end -}}
+        {{- with $metadataGathered.dateModified }}<meta itemprop="dateModified" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end}}
 <meta itemprop="wordCount" content="{{ .WordCount }}">
 
-{{- range $metadataGathered.images }}
+    {{- range $metadataGathered.images }}
 <meta itemprop="image" content="{{ . | absURL }}">
-{{- end }}
+    {{- end }}
 <meta itemprop="keywords" content="{{ delimit $metadataGathered.keywords ","}}" />
 {{- end -}}

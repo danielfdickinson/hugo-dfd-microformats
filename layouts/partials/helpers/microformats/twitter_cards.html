@@ -1,12 +1,14 @@
-{{- $metadataGathered := partial "helpers/return-metadata" (dict "page" .Page) }}
-{{- with $metadataGathered.images }}
+{{- if (.Params.microformatsTwitterCardEnable | default .Site.Params.microformatsTwitterCardEnable | default true) -}}
+    {{- $metadataGathered := partial "helpers/return-metadata" (dict "page" .Page) }}
+    {{- with $metadataGathered.images }}
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
-{{- else }}
+    {{- else }}
 <meta name="twitter:card" content="summary"/>
-{{- end }}
+    {{- end }}
 <meta name="twitter:title" content="{{ $metadataGathered.name }}"/>
 <meta name="twitter:description" content="{{ $metadataGathered.description }}"/>
-{{- with .Site.Social.twitter }}
+    {{- with .Site.Social.twitter }}
 <meta name="twitter:site" content="@{{ . }}"/>
-{{- end -}}
+    {{- end -}}
+{{- end -}
