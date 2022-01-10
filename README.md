@@ -4,10 +4,7 @@ A Hugo module for adding microformats to 'head' element
 
 ## Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/aef567f3-91f6-46d1-ab62-c23e41b1625a/deploy-status)](https://app.netlify.com/sites/hugo-dfd-microformats/deploys)
-## Demo Site
-
-<https://hugo-dfd-microformats.wildtechgarden.ca>
+ARCHIVED: This module has been archived and is merged into (and replaced by) <https://github.com/danielfdickinson/metadata-mod-hugo-dfd>.
 
 ## Features
 
